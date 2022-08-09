@@ -1,4 +1,4 @@
-package POM;
+package Day1.POM;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,5 +16,7 @@ public class HomePageElements {
 
     @FindBy(xpath = "//a[text()='Login']")
     public WebElement loginButton;
+
+
 
 }

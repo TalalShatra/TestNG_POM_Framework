@@ -1,9 +1,9 @@
-package Test;
+package Day1.Test;
 
-import POM.HomePageElements;
-import POM.LoginPageElements;
-import POM.MyAccountPageElements;
-import Utils.BaseDriver;
+import Day1.POM.HomePageElements;
+import Day1.POM.LoginPageElements;
+import Day1.POM.MyAccountPageElements;
+import Day1.Utils.BaseDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

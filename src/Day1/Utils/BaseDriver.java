@@ -1,4 +1,4 @@
-package Utils;
+package Day1.Utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,10 +26,10 @@ public class BaseDriver {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+    //@AfterMethod
+    //public void tearDown() {
+     //   driver.quit();
+    //}
 
 
 }
