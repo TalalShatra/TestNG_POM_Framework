@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import java.util.concurrent.TimeUnit;
 
 public class BaseDriver {
@@ -23,13 +22,11 @@ public class BaseDriver {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get("http://opencart.abstracta.us/");
-
     }
-
-    //@AfterMethod
-    //public void tearDown() {
-     //   driver.quit();
-    //}
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 
 
 }

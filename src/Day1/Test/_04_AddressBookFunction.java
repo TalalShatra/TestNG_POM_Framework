@@ -18,10 +18,10 @@ public class _04_AddressBookFunction extends BaseDriver {
     LoginPageElements loginPageElements;
     MyAccountPageElements myAccountPageElements;
 
-    String expectedMessage2 = "Your address has been successfully added";
-    String expectedMessage3 = "Your address has been successfully updated";
-    String expectedMessage4 = "Your address has been successfully deleted";
-    @Test
+    String expectedMessageNewAddress = "Your address has been successfully added";
+    String expectedMessageEditAddress = "Your address has been successfully updated";
+    String expectedMessageDeleteAddress = "Your address has been successfully deleted";
+    @Test           //(priority = 1)
     public void addNewAddressTest() {
 
         homePageElements = new HomePageElements(driver);
@@ -53,13 +53,13 @@ public class _04_AddressBookFunction extends BaseDriver {
         Select selectState = new Select(myAccountPageElements.stateDropdown);
         selectState.selectByVisibleText("Arizona");
 
-        myAccountPageElements.defaultAddressYesRadioButton.click();
+        myAccountPageElements.defaultAddressNoRadioButton.click();
         myAccountPageElements.continueButton.click();
 
         Assert.assertTrue(myAccountPageElements.successMessage.isDisplayed());
-        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessage2);
+        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessageNewAddress);
     }
-    @Test
+    @Test (dependsOnMethods = "addNewAddressTest")        //(priority = 2)
     public void editAddressTest() {
 
         homePageElements = new HomePageElements(driver);
@@ -81,28 +81,17 @@ public class _04_AddressBookFunction extends BaseDriver {
 
         myAccountPageElements.editAddressButton.click();
 
-        myAccountPageElements.firstNameButton.clear();
-        myAccountPageElements.firstNameButton.sendKeys("well");
-        myAccountPageElements.lastNameButton.clear();
-        myAccountPageElements.lastNameButton.sendKeys("sander");
         myAccountPageElements.address1Input.clear();
-        myAccountPageElements.address1Input.sendKeys("15 main street");
-        myAccountPageElements.cityInput.clear();
-        myAccountPageElements.cityInput.sendKeys("paterson");
-        myAccountPageElements.postalCodeInput.clear();
-        myAccountPageElements.postalCodeInput.sendKeys("07504");
-        Select selectCountry = new Select(myAccountPageElements.countryDropdown);
-        selectCountry.selectByVisibleText("United States");
-        Select selectState = new Select(myAccountPageElements.stateDropdown);
-        selectState.selectByVisibleText("Arizona");
+        myAccountPageElements.address1Input.sendKeys("21 main street");
+
         myAccountPageElements.defaultAddressNoRadioButton.click();
         myAccountPageElements.continueButton.click();
 
         Assert.assertTrue(myAccountPageElements.successMessage.isDisplayed());
-        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessage3);
+        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessageEditAddress);
     }
 
-    @Test
+    @Test(dependsOnMethods = "editAddressTest")   //(priority = 3)
     public void deleteAddressTest() {
 
         homePageElements = new HomePageElements(driver);
@@ -125,7 +114,7 @@ public class _04_AddressBookFunction extends BaseDriver {
         myAccountPageElements.deleteAddressButton.click();
 
         Assert.assertTrue(myAccountPageElements.successMessage.isDisplayed());
-        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessage4);
+        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessageDeleteAddress);
 
     }
 }
