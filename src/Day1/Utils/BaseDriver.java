@@ -28,5 +28,23 @@ public class BaseDriver {
         driver.quit();
     }
 
-
 }
+/* for crossBrowserTesting
+@BeforeMethod
+        @Parameters({"browser"})
+        public void setup(String browser) {
+
+        if (browser.equals("chrome")) {
+        System.setProperty("webdriver.chrome.driver", "/Library/Selenium/chromedriver/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.get("http://opencart.abstracta.us/");
+        } else if (browser.equals("firefox")) {
+        System.setProperty("webdriver.gecko.driver", "/Library/Selenium/geckodriver/geckodriver");
+        driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.get("http://opencart.abstracta.us/");
+        }
+ */

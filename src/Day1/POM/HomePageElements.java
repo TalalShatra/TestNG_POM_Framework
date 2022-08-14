@@ -22,16 +22,28 @@ public class HomePageElements {
 
     //05 SearchFunctionality
 
+    @FindBy(xpath = "//a[text()='Your Store']")
+    public WebElement yourStoreButton;
+
     @FindBy(css = "input[name='search']")
     public WebElement searchBar;
 
-    @FindBy(css = "i[class='fa fa-search']")
+    @FindBy(css = "button[class='btn btn-default btn-lg']")
     public WebElement searchButton;
 
-    @FindAll({@FindBy(css = "h4")})
+    @FindAll({@FindBy(xpath = "//h4")})
     public List<WebElement> itemsList;
 
+    // 06
 
+    @FindBy(xpath = "//a[text()='Contact Us']")
+    public WebElement contactUsButton;
+
+    @FindBy(id = "input-enquiry")
+    public WebElement enquiryInput;
+
+    @FindBy(css = "input[value='Submit']")
+    public WebElement submitButton;
 
 
 
